@@ -6,8 +6,9 @@
 
 #include "adbprocess.h"
 #include "server.h"
-
-
+#include "frames.h"
+#include "decoder.h"
+#include "qyuvopenglwidget.h"
 
 namespace Ui {
 class Dialog;
@@ -32,6 +33,12 @@ private:
     Ui::Dialog *ui;
     AdbProcess m_adb;
     server m_server;
+
+    Frames m_frames;
+
+    Decoder m_decoder;
+
+    QYUVOpenGLWidget * m_videoWidget;
 };
 
 #endif // DIALOG_H
