@@ -4,16 +4,12 @@
 #include <QDialog>
 #include <QPointer>
 
-#include "adbprocess.h"
-#include "server.h"
-#include "frames.h"
-#include "decoder.h"
-#include "qyuvopenglwidget.h"
-#include "controller.h"
 
 namespace Ui {
 class Dialog;
 }
+
+class VideoForm;
 
 class Dialog : public QDialog
 {
@@ -35,17 +31,11 @@ private slots:
 private:
     Ui::Dialog *ui;
 
-    AdbProcess m_adb;
+    QPointer<VideoForm> m_videoForm;
 
-    server m_server;
 
-    Frames m_frames;
 
-    Decoder m_decoder;
 
-    Controller m_controller;
-
-    QYUVOpenGLWidget * m_videoWidget;
 };
 
 #endif // DIALOG_H

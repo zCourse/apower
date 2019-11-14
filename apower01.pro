@@ -28,13 +28,16 @@ msvc{
 
 SOURCES += \
         main.cpp \
-        dialog.cpp
+        dialog.cpp \
+    videoform.cpp
 
 HEADERS += \
-        dialog.h
+        dialog.h \
+    videoform.h
 
 FORMS += \
-        dialog.ui
+        dialog.ui \
+    videoform.ui
 
 # 子模块
 include($$PWD/adb/adb.pri)
