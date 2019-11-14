@@ -9,6 +9,7 @@
 #include "frames.h"
 #include "decoder.h"
 #include "qyuvopenglwidget.h"
+#include "controller.h"
 
 namespace Ui {
 class Dialog;
@@ -29,14 +30,20 @@ private slots:
 
     void on_stopBtn_clicked();
 
+    void on_test_clicked();
+
 private:
     Ui::Dialog *ui;
+
     AdbProcess m_adb;
+
     server m_server;
 
     Frames m_frames;
 
     Decoder m_decoder;
+
+    Controller m_controller;
 
     QYUVOpenGLWidget * m_videoWidget;
 };

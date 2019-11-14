@@ -42,6 +42,8 @@ include($$PWD/server/server.pri)
 include($$PWD/decoder/decoder.pri)
 include($$PWD/common/common.pri)
 include($$PWD/render/render.pri)
+include($$PWD/android/android.pri)
+include($$PWD/inputcontrol/inputcontrol.pri)
 
 # 包含目录
 INCLUDEPATH += \
@@ -50,6 +52,8 @@ INCLUDEPATH += \
         $$PWD/decoder \
         $$PWD/common \
         $$PWD/render \
+        $$PWD/android \
+        $$PWD/inputcontrol \
         $$PWD/thrid_party/ffmpeg/include
 
 # 统一版本号入口,只修改这一个地方即可

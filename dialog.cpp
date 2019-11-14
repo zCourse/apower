@@ -2,9 +2,12 @@
 #include <QDir>
 #include <QBuffer>
 #include <QTimer>
-
+#include "input.h"
+#include "keycodes.h"
 #include "dialog.h"
 #include "ui_dialog.h"
+#include "controlevent.h"
+
 Dialog::Dialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Dialog)
@@ -21,6 +24,8 @@ Dialog::Dialog(QWidget *parent) :
         if(success){
             m_decoder.setDeviceSocket(m_server.getDeviceSocket());
             m_decoder.startDecode();
+
+            m_controller.setDeviceSocket(m_server.getDeviceSocket());
         }
     });
 
@@ -40,7 +45,7 @@ Dialog::Dialog(QWidget *parent) :
     });
 
     m_videoWidget = new QYUVOpenGLWidget(Q_NULLPTR);
-    m_videoWidget->resize(320,480);
+    m_videoWidget->resize(300,600);
 
 }
 
@@ -68,6 +73,17 @@ void Dialog::on_startBtn_clicked()
 void Dialog::on_stopBtn_clicked()
 {
     m_server.stop();
-    m_videoWidget->close()
+    m_videoWidget->close();
 
+}
+
+void Dialog::on_test_clicked()
+{
+    QRect pos;
+    pos.setLeft(100);
+    pos.setTop(100);
+    pos.setWidth(m_videoWidget->frameSize().width());
+    pos.setHeight(m_videoWidget->frameSize().height());
+
+    m_controller.test(pos);
 }
