@@ -18,6 +18,7 @@ public:
 
     // 设置视频帧尺寸，用于生成纹理
     void setFrameSize(const QSize& frameSize);
+
     // 返回当前视频帧尺寸
     const QSize& frameSize();
     // 渲染视频帧

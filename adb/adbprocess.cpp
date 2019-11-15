@@ -12,6 +12,13 @@ AdbProcess::AdbProcess(QObject *parent)
     initSignals();
 }
 
+AdbProcess::~AdbProcess()
+{
+    if (isRuning()) {
+        close();
+    }
+}
+
 QString AdbProcess::getAdbPath()
 {
     if (s_adbPath.isEmpty()) {
@@ -26,6 +33,8 @@ QString AdbProcess::getAdbPath()
 
 void AdbProcess::execute(const QString &serial, const QStringList &args)
 {
+    m_standardOutput = "";
+    m_errorOutput = "";
     QStringList adbArgs;
     if(!serial.isEmpty()) {
         adbArgs << "-s" << serial;
@@ -94,13 +103,32 @@ QString AdbProcess::getDeviceIPFromStdOut()
     */
 
     QString ip = "";
+#if 0
     QString strIPExp = "inet [\\d.]*";
-    QRegExp ipRegExp(strIPExp, Qt::CaseInsensitive);
+    QRegExp ipRegExp(strIPExp,Qt::CaseInsensitive);
     if (ipRegExp.indexIn(m_standardOutput) != -1) {
         ip = ipRegExp.cap(0);
         ip = ip.right(ip.size() - 5);
     }
+#else
+    QString strIPExp = "inet addr:[\\d.]*";
+    QRegExp ipRegExp(strIPExp,Qt::CaseInsensitive);
+    if (ipRegExp.indexIn(m_standardOutput) != -1) {
+        ip = ipRegExp.cap(0);
+        ip = ip.right(ip.size() - 10);
+    }
+#endif
+
     return ip;
+}
+
+bool AdbProcess::isRuning()
+{
+    if (QProcess::NotRunning == state()) {
+        return false;
+    } else {
+        return true;
+    }
 }
 
 QString AdbProcess::getStdOut()
@@ -120,8 +148,10 @@ void AdbProcess::initSignals()
             emit adbProcessResult(AER_ERROR_MISSING_BINARY);
         } else {
             emit adbProcessResult(AER_ERROR_START);
+            QString err = QString("qprocess start error:%1 %2").arg(program()).arg(arguments().join(" "));
+            qCritical(err.toStdString().c_str());
         }
-        qDebug() << error;
+        //qDebug() << error;
     });
 
     connect(this, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished),
@@ -129,19 +159,26 @@ void AdbProcess::initSignals()
         if (QProcess::NormalExit == exitStatus && 0 == exitCode) {
             emit adbProcessResult(AER_SUCCESS_EXEC);
         } else {
-            emit adbProcessResult(AER_ERROR_EXEC);
+               //P7C0218510000537        unauthorized ,手机端此时弹出调试认证，要允许调试
+              emit adbProcessResult(AER_ERROR_EXEC);
+              QString err = QString("qprocess start error:%1 %2").arg(program()).arg(arguments().join(" "));
+              qCritical(err.toStdString().c_str());
         }
-        qDebug() << exitCode << exitStatus;
+        qDebug() << "adb return " << exitCode << "exit status " << exitStatus;
     });
 
     connect(this, &QProcess::readyReadStandardError, this, [this](){
-        m_errorOutput = QString::fromLocal8Bit(readAllStandardError()).trimmed();
-        qDebug() << m_errorOutput;
+//        m_errorOutput = QString::fromLocal8Bit(readAllStandardError()).trimmed();
+//        qDebug() << m_errorOutput;
+        QString tmp = QString::fromLocal8Bit(readAllStandardError()).trimmed();
+        m_errorOutput += tmp;
+        qWarning(QString("AdbProcess::error:%1").arg(tmp).toUtf8());
     });
 
     connect(this, &QProcess::readyReadStandardOutput, this, [this](){
-        m_standardOutput= QString::fromLocal8Bit(readAllStandardOutput()).trimmed();
-        qDebug() << m_standardOutput;
+        QString tmp = QString::fromLocal8Bit(readAllStandardOutput()).trimmed();
+        m_standardOutput += tmp;
+        qInfo(QString("AdbProcess::out:%1").arg(tmp).toUtf8());
     });
 
     connect(this, &QProcess::started, this, [this](){

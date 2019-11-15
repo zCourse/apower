@@ -1,2 +1,6 @@
-<!DOCTYPE RCC>
-<RCC version="1.0"/>
+<RCC>
+    <qresource prefix="/">
+        <file>res/QtScrcpy.icns</file>
+        <file>res/QtScrcpy.ico</file>
+    </qresource>
+</RCC>

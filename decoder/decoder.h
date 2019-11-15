@@ -36,6 +36,7 @@ signals:
 
 protected:
     void run();
+
     void pushFrame();
 
 private:

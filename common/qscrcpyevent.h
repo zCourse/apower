@@ -14,7 +14,6 @@ public:
     QScrcpyEvent(Type type) : QEvent(QEvent::Type(type)){}
 };
 
-// DeviceSocketEvent
 class DeviceSocketEvent : public QScrcpyEvent
 {
 public:

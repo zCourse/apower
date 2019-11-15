@@ -14,7 +14,8 @@ public:
         AER_ERROR_MISSING_BINARY,   // 找不到文件
     };
 
-    AdbProcess(QObject *parent = Q_NULLPTR);
+    explicit AdbProcess(QObject *parent = nullptr);
+    virtual ~AdbProcess();
 
     void execute(const QString& serial, const QStringList& args);
     void push(const QString& serial, const QString& local, const QString& remote);
@@ -25,7 +26,7 @@ public:
     QString getDeviceIPFromStdOut();
     QString getStdOut();
     QString getErrorOut();
-
+    bool isRuning();
     static QString getAdbPath();
 
 signals:

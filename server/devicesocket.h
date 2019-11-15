@@ -30,6 +30,7 @@ private:
     bool m_recvData = false;
     bool m_quit = false;
 
+
     // 数据缓存
     quint8* m_buffer = Q_NULLPTR;
     qint32 m_bufferSize = 0;
