@@ -5,6 +5,6 @@ android apower
 
 ![image](https://file.zousiliang.com/qt_one_dog_0001.png)
 
-##### 2.pc端鼠标控制功能
+##### 2.pc端鼠标操作功能
 
-##### 3.pc端键盘控制功能
+##### 3.pc端键盘操作功能
