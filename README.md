@@ -1,7 +1,7 @@
 # apower
 android apower
 
-##### 1.实现的显屏功能
+##### 1.实现同屏功能
 
 ![image](https://file.zousiliang.com/qt_one_dog_0001.png)
 
