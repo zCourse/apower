@@ -19,5 +19,4 @@ openGL : https://learnopengl-cn.github.io/
 
 ffmpeg : http://ffmpeg.org/
 
-音视频技术 : https://blog.csdn.net/leixiaohua1020/article/details/18893769
-
+音视频 : https://blog.csdn.net/leixiaohua1020/article/details/18893769
