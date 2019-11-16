@@ -13,4 +13,11 @@ android 同屏软件
 
 ![image](https://file.zousiliang.com/scrcpy_source_001.png)
 
+adb    : 常用指令 : https://mazhuang.org/awesome-adb/
+
+openGL : https://learnopengl-cn.github.io/
+
+ffmpeg : http://ffmpeg.org/
+
+音视频技术 : https://blog.csdn.net/leixiaohua1020/article/details/18893769
 
