@@ -1,5 +1,5 @@
 # apower
-android apower
+android 同屏软件
 
 ##### 1.实现同屏功能
 
@@ -12,3 +12,5 @@ android apower
  scrcpy源码  https://github.com/Genymobile/scrcpy
 
 ![image](https://file.zousiliang.com/scrcpy_source_001.png)
+
+
