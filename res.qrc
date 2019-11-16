@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/">
-        <file>res/QtScrcpy.icns</file>
-        <file>res/QtScrcpy.ico</file>
+        <file>res/apower.icns</file>
+        <file>res/apower.ico</file>
     </qresource>
 </RCC>
