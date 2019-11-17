@@ -14,7 +14,7 @@ android 同屏软件
 
 ##### 4.截屏
 
-##### 5.录制视频截屏
+##### 5.录制视频
 
 ##### 6.wifi实现同屏功能
 
@@ -25,7 +25,6 @@ android 同屏软件
 ##### 9.窗口可改变大小
 
 ##### 10.自定义屏幕键盘按键
-
 
 
  scrcpy源码  https://github.com/Genymobile/scrcpy
