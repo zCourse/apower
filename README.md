@@ -26,9 +26,6 @@ android 同屏软件
 
 ##### 10.自定义屏幕键盘按键
 
-### ？？？
-
-##### 100000000000.兼容IOS
 
  scrcpy源码  https://github.com/Genymobile/scrcpy
 
