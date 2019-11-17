@@ -28,7 +28,7 @@ android 同屏软件
 
 ### no way
 
-##### 兼容IOS
+##### 100000000000.兼容IOS
 
  scrcpy源码  https://github.com/Genymobile/scrcpy
 
