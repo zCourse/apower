@@ -88,12 +88,12 @@ win32 {
 
         # 依赖模块
         LIBS += \
-                -L$$PWD/../thrid_party/ffmpeg/lib/x64 -lavformat \
-                -L$$PWD/../thrid_party/ffmpeg/lib/x64 -lavcodec \
-                -L$$PWD/../thrid_party/ffmpeg/lib/x64 -lavutil \
-                -L$$PWD/../thrid_party/ffmpeg/lib/x64 -lswscale
+                -L$$PWD/thrid_party/ffmpeg/lib/x64 -lavformat \
+                -L$$PWD/thrid_party/ffmpeg/lib/x64 -lavcodec \
+                -L$$PWD/thrid_party/ffmpeg/lib/x64 -lavutil \
+                -L$$PWD/thrid_party/ffmpeg/lib/x64 -lswscale
 
-        WIN_FFMPEG_SRC = $$PWD/../thrid_party/ffmpeg/bin/x64/*.dll
+        WIN_FFMPEG_SRC = $$PWD/thrid_party/ffmpeg/bin/x64/*.dll
     } else {
         message("x86")
         # 输出目录
@@ -105,12 +105,12 @@ win32 {
 
         # 依赖模块
         LIBS += \
-                -L$$PWD/../thrid_party/ffmpeg/lib/x86 -lavformat \
-                -L$$PWD/../thrid_party/ffmpeg/lib/x86 -lavcodec \
-                -L$$PWD/../thrid_party/ffmpeg/lib/x86 -lavutil \
-                -L$$PWD/../thrid_party/ffmpeg/lib/x86 -lswscale
+                -L$$PWD/thrid_party/ffmpeg/lib/x86 -lavformat \
+                -L$$PWD/thrid_party/ffmpeg/lib/x86 -lavcodec \
+                -L$$PWD/thrid_party/ffmpeg/lib/x86 -lavutil \
+                -L$$PWD/thrid_party/ffmpeg/lib/x86 -lswscale
 
-        WIN_FFMPEG_SRC = $$PWD/../thrid_party/ffmpeg/bin/x86/*.dll
+        WIN_FFMPEG_SRC = $$PWD/thrid_party/ffmpeg/bin/x86/*.dll
     }
 
     # 复制依赖库
