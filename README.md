@@ -30,11 +30,14 @@ GNU/Linux, Windows and MacOS
 
 ![image](https://file.zousiliang.com/mac_qt_one_01.png)
 
+
+![image](https://file.zousiliang.com/ubuntu_qt_one_001.png)
+
  scrcpy源码  https://github.com/Genymobile/scrcpy
 
 ![image](https://file.zousiliang.com/scrcpy_source_001.png)
 
-![image](https://file.zousiliang.com/ubuntu_qt_one_001.png)
+
 
 - adb常用指令 : https://mazhuang.org/awesome-adb/
 
