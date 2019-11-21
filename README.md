@@ -31,6 +31,8 @@ android 同屏软件
 
 ![image](https://file.zousiliang.com/scrcpy_source_001.png)
 
+![image](https://file.zousiliang.com/ubuntu_qt_one_001.png)
+
 - adb常用指令 : https://mazhuang.org/awesome-adb/
 
 - openGL : https://learnopengl-cn.github.io/

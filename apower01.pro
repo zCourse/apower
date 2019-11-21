@@ -181,10 +181,10 @@ linux {
 
     # 依赖模块
     LIBS += \
-            -L$$PWD/../third_party/ffmpeg/lib -lavformat \
-            -L$$PWD/../third_party/ffmpeg/lib -lavcodec \
-            -L$$PWD/../third_party/ffmpeg/lib -lavutil \
-            -L$$PWD/../third_party/ffmpeg/lib -lswscale
+            -L$$PWD/thrid_party/ffmpeg/lib -lavformat \
+            -L$$PWD/thrid_party/ffmpeg/lib -lavcodec \
+            -L$$PWD/thrid_party/ffmpeg/lib -lavutil \
+            -L$$PWD/thrid_party/ffmpeg/lib -lswscale
 
     # linux set app icon: https://blog.csdn.net/MrNoboday/article/details/82870853
 }

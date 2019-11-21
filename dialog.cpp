@@ -202,22 +202,7 @@ void Dialog::on_getPicBtn_clicked()
         absFilePath = dir.absoluteFilePath(fileName);
 
 
-        QStringList adbArgs;
-        adbArgs << "shell";
-        adbArgs << "screencap";
-        adbArgs << "-p";
-        adbArgs <<  QString("/sdcard/%1").arg(fileName);
-        m_adb.execute(ui->serialBox->currentText().trimmed(), adbArgs);
 
-
-
-          QTimer::singleShot(3, this, [this](){
-              QStringList adbArgs2;
-              adbArgs2 << "pull";
-              adbArgs2 << QString("/sdcard/%1").arg(fileName);
-              adbArgs2 << absFilePath;
-                  m_adb.execute(ui->serialBox->currentText().trimmed(),adbArgs2);
-         });
 
 
     }
