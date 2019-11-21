@@ -1,7 +1,11 @@
 #include <QDebug>
 #include <QDir>
 #include <QBuffer>
+#include <QFileDialog>
 #include <QTimer>
+#include <QFile>
+#include <QTime>
+
 #include "input.h"
 #include "keycodes.h"
 #include "dialog.h"
@@ -176,5 +180,57 @@ void Dialog::on_wirelessDisConnectBtn_clicked()
     adbArgs << "disconnect";
     adbArgs << addr;
     m_adb.execute("", adbArgs);
+
+}
+
+void Dialog::on_getPicBtn_clicked()
+{
+    if (s_absImgFilePath.isEmpty()) {
+        QFileDialog::Options options = QFileDialog::DontResolveSymlinks | QFileDialog::ShowDirsOnly;
+        QString directory = QFileDialog::getExistingDirectory(this, tr("select path"), "",options);
+        s_absImgFilePath = directory;
+    }
+
+    QString absFilePath;
+    QString fileDir(s_absImgFilePath);
+    if (!fileDir.isEmpty()) {
+        QDateTime dateTime = QDateTime::currentDateTime();
+        QString fileName = dateTime.toString("_yyyyMMdd_hhmmss_zzz");
+        QString ext = "png";
+        fileName = windowTitle() + fileName + "." + ext;
+        QDir dir(fileDir);
+        absFilePath = dir.absoluteFilePath(fileName);
+
+
+        QStringList adbArgs;
+        adbArgs << "shell";
+        adbArgs << "screencap";
+        adbArgs << "-p";
+        adbArgs <<  QString("/sdcard/%1").arg(fileName);
+        m_adb.execute(ui->serialBox->currentText().trimmed(), adbArgs);
+
+
+
+          QTimer::singleShot(3, this, [this](){
+              QStringList adbArgs2;
+              adbArgs2 << "pull";
+              adbArgs2 << QString("/sdcard/%1").arg(fileName);
+              adbArgs2 << absFilePath;
+                  m_adb.execute(ui->serialBox->currentText().trimmed(),adbArgs2);
+         });
+
+
+    }
+
+
+//    adb shell /system/bin/screencap -p /sdcard/screenshot.png（保存到SDCard）
+
+//    adb pull /sdcard/screenshot.png d:/screenshot.png（保存到电脑）
+
+    outLog("start screencap...", false);
+
+
+
+
 
 }

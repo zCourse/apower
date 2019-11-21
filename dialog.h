@@ -37,6 +37,8 @@ private slots:
 
     void on_wirelessDisConnectBtn_clicked();
 
+    void on_getPicBtn_clicked();
+
 private:
      bool checkAdbRun();
 
@@ -46,6 +48,9 @@ private:
     QPointer<VideoForm> m_videoForm;
 
     AdbProcess m_adb;
+
+
+    QString  s_absImgFilePath ="";
 
 
 };
