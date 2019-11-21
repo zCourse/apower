@@ -26,6 +26,9 @@ android 同屏软件
 
 ##### 10.自定义屏幕键盘按键
 
+GNU/Linux, Windows and MacOS
+
+![image](https://file.zousiliang.com/mac_qt_one_01.png)
 
  scrcpy源码  https://github.com/Genymobile/scrcpy
 
