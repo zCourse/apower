@@ -28,7 +28,7 @@ android 同屏软件
 
 GNU/Linux, Windows and MacOS
 
-![image](https://file.zousiliang.com/win_qt_one_001.png)
+![image](https://file.zousiliang.com/windows_qt_one_00001.png)
 
 ![image](https://file.zousiliang.com/mac_qt_one_01.png)
 
