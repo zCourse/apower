@@ -20,8 +20,6 @@
 - 音视频  : https://blog.csdn.net/leixiaohua1020/article/details/18893769
 
 
-# apower
-
 android 同屏软件
 
 ### 已完成
