@@ -1,5 +1,5 @@
 #include <QTimer>
-
+#include <QDesktopWidget>
 #ifdef Q_OS_WIN32
 #include <Windows.h>
 #endif
@@ -134,10 +134,75 @@ void VideoForm::updateShowSize(const QSize &newSize)
         m_frameSize = newSize;
 
         bool vertical = newSize.height() > newSize.width();
-        if (vertical) {
-            resize(VIDEO_FROM_WIDTH, VIDEO_FROM_HEIGHT);
-        } else {
-            resize(VIDEO_FROM_HEIGHT, VIDEO_FROM_WIDTH);
+
+        QSize showSize = newSize;
+        QDesktopWidget* desktop = QApplication::desktop();
+
+        if (desktop) {
+            QRect screenRect = desktop->availableGeometry();
+            if (vertical) {
+                showSize.setHeight(qMin(newSize.height(), screenRect.height() - 200));
+                showSize.setWidth(showSize.height() * m_widthHeightRatio);
+            } else {
+                showSize.setWidth(qMin(newSize.width(), screenRect.width()/2));
+                showSize.setHeight(showSize.width() * m_widthHeightRatio);
+            }
+
+            if (isFullScreen()) {
+                switchFullScreen();
+            }
+            if (layout()) {
+                QMargins m = getMargins(vertical);
+                showSize.setWidth(showSize.width() + m.left() + m.right());
+                showSize.setHeight(showSize.height() + m.top() + m.bottom());
+            }
+
+            // 窗口居中
+            move(screenRect.center() - QRect(0, 0, showSize.width(), showSize.height()).center());
+        }
+
+
+
+        if (showSize != size()) {
+#ifdef Q_OS_OSX
+            setFixedSize(showSize);
+#else
+            resize(showSize);
+#endif
+
         }
     }
+
+//        if (vertical) {
+//            resize(VIDEO_FROM_WIDTH, VIDEO_FROM_HEIGHT);
+//        } else {
+//            resize(VIDEO_FROM_HEIGHT, VIDEO_FROM_WIDTH);
+//        }
+   // }
+}
+
+
+void VideoForm::switchFullScreen()
+{
+    if (isFullScreen()) {
+        showNormal();
+
+  }
+}
+
+void VideoForm::showToolForm(bool show)
+{
+
+}
+
+
+QMargins VideoForm::getMargins(bool vertical)
+{
+        QMargins margins;
+        if (vertical) {
+            margins = QMargins(10, 68, 12, 62);
+        } else {
+            margins = QMargins(68, 12, 62, 10);
+        }
+        return margins;
 }

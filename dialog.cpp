@@ -81,6 +81,7 @@ void Dialog::outLog(const QString &log, bool newLine)
 
 void Dialog::on_startServerBtn_clicked()
 {
+     outLog("start server...", false);
     if (!m_videoForm) {
         m_videoForm = new VideoForm(ui->serialBox->currentText().trimmed());
     }
