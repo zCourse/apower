@@ -17,6 +17,8 @@
 
 - ffmpeg : http://ffmpeg.org/
 
+- ffmpeg视音频编解码 : https://blog.csdn.net/leixiaohua1020/article/details/15811977
+
 - 音视频  : https://blog.csdn.net/leixiaohua1020/article/details/18893769
 
 
