@@ -7,6 +7,8 @@
 
 ![image](https://file.zousiliang.com/ubuntu_qt_one_001.png)
 
+macos  [下载地址](https://file.zousiliang.com/apower.app.zip)
+
  scrcpy源码  https://github.com/Genymobile/scrcpy
 
 ![image](https://file.zousiliang.com/scrcpy_source_001.png)
